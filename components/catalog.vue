@@ -6,16 +6,6 @@
         <div>Футболки</div>
         <div>Рубашки</div>
       </div>
-      <div id="order">
-        <div id="sort">Сортировать по:</div>
-        <div id="price">цене</div>
-        <svg id="arrow" width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 0H0L2.5 2.5L5 0Z" fill="#59606D"/>
-        </svg>
-        <div id="option">
-          <div>По цене</div>
-          <div>По популярности</div>
-        </div>
       </div>
     <div class="card">
       d
@@ -50,30 +40,6 @@
     left: 88px;
     top: 32px;
 
-  }
-  #sort{
-    height: 21px;
-    top:42px;
-    left: 1191px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: flex-end;
-  }
-  #price{
-    width: 34px;
-    height: 21px;
-    left: 1309px;
-    top: 42px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 21px;
-    display: flex;
-    align-items: flex-end;
-    color: #59606D;
   }
   #arrow{
     position: absolute;
