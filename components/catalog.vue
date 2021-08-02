@@ -6,11 +6,9 @@
         <div>Футболки</div>
         <div>Рубашки</div>
       </div>
-      </div>
-    <div class="card">
-      d
-    </div>
-  </div>
+   </div>
+  
+
 </template>
 
 <script>
