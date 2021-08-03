@@ -7,8 +7,6 @@
         <div>Рубашки</div>
       </div>
    </div>
-  
-
 </template>
 
 <script>
@@ -22,7 +20,7 @@
   }
 </style>
 <style scoped lang="scss">
-   h1,#sort,#price{
+  h1{
     position: absolute;
     font-family: 'PT Sans', sans-serif;
   }

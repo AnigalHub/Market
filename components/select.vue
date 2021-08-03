@@ -21,7 +21,6 @@
     height: 21px;
     top:42px;
     left: 1191px;
-    font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 21px;
@@ -33,12 +32,15 @@
     height: 21px;
     left: 1309px;
     top: 42px;
-    font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 21px;
     display: flex;
     align-items: flex-end;
     color: #59606D;
+  }
+  #sort,#price{
+    position: absolute;
+    font-family: 'PT Sans', sans-serif;
   }
 </style>
