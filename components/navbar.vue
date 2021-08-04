@@ -42,7 +42,6 @@
     top: 18px;
     color: #59606D;
     font-family: 'PT Sans', sans-serif;
-    font-style: normal;
     font-weight: bold;
     font-size: 22px;
     line-height: 28px;

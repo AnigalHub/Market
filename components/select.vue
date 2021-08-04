@@ -21,7 +21,6 @@
     height: 21px;
     top:42px;
     left: 1191px;
-    font-weight: normal;
     font-size: 16px;
     line-height: 21px;
     display: flex;
@@ -32,7 +31,6 @@
     height: 21px;
     left: 1309px;
     top: 42px;
-    font-weight: normal;
     font-size: 16px;
     line-height: 21px;
     display: flex;

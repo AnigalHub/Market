@@ -2,13 +2,9 @@
   <div>
     <navbar/>
     <div class="background">
-
       <catalog/>
     </div>
   </div>
-
-
-
 </template>
 
 <script>
