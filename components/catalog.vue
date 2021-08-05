@@ -1,11 +1,11 @@
 <template>
   <div id="catalog">
       <h1>Каталог</h1>
-      <div id="categories">
-        <div>Рюкзаки</div>
-        <div>Футболки</div>
-        <div>Рубашки</div>
-      </div>
+      <nav id="categories">
+        <a>Рюкзаки</a>
+        <a>Футболки</a>
+        <a>Рубашки</a>
+      </nav>
    </div>
 </template>
 
