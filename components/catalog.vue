@@ -11,7 +11,16 @@
 
 <script>
     export default {
-        name: "catalog"
+        name: "catalog",
+      data(){
+         return{
+           Catalog:[
+             {name:"Рюкзаки"},
+             {name: "Футболки"},
+             {name: "Рубашки"},
+           ]
+         }
+      }
     }
 </script>
 <style>
