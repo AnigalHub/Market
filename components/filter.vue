@@ -7,7 +7,15 @@
 
 <script>
     export default {
-        name: "filter"
+        name: "filter",
+        data(){
+          return{
+            filter:[
+              {name:"по цене"},
+              {name: "по популярности"}
+            ]
+          }
+        }
     }
 </script>
 
