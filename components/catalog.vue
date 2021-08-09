@@ -3,9 +3,6 @@
       <h1>Каталог</h1>
       <nav id="categories" v-for="name in Catalog">
         <a>{{name.name}}</a>
-        <a>Рюкзаки</a>
-        <a>Футболки</a>
-        <a>Рубашки</a>
       </nav>
    </div>
 </template>
