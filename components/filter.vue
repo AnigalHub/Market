@@ -1,5 +1,8 @@
 <template>
   <div id="option">
+    <div v-for="name in filter">
+     <div> {{name.name}}</div>
+    </div>
     <div>По цене</div>
     <div>По популярности</div>
   </div>
