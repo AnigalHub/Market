@@ -1,9 +1,23 @@
 <template>
   <div id="catalog">
+    <div class="flex-container">
       <h1>Каталог</h1>
-      <nav id="categories" v-for="name in Catalog">
-        <a>{{name.name}}</a>
-      </nav>
+      <div id="sort">Сортировать по:</div>
+      <div id="price">цене</div>
+      <svg id="arrow" width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 0H0L2.5 2.5L5 0Z" fill="#59606D"/>
+      </svg>
+    </div>
+
+
+    <nav id="categories" >
+       <ul>
+         <li v-for="name in Catalog"><a>{{name.name}}</a></li>
+       </ul>
+    </nav>
+
+
+
    </div>
 </template>
 
@@ -28,64 +42,62 @@
 </style>
 <style scoped lang="scss">
   h1{
-    position: absolute;
+    margin: 0 !important;
+    width: 111px !important;
+    height: 41px;
+    padding: 32px 0 0 88px;
     font-family: 'PT Sans', sans-serif;
   }
-  #catalog{
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    width: 1440px;
+  .flex-container{
+    display: flex;
   }
-  h1{
-    width: 111px;
-    height: 41px;
-    left: 88px;
-    top: 32px;
-
+  #sort{
+    height: 21px;
+    padding-left: 992px;
+    font-size: 16px;
+    line-height: 21px;
+    float: left;
+    display: flex;
+    align-items: flex-end;
   }
-  #arrow{
-    position: absolute;
-    width: 5px;
-    height: 2.5px;
-    left: 1347px;
-    top: 52px;
+  #price{
+    width: 34px;
+    height: 21px;
+    padding-left: 6px;
+    font-size: 16px;
+    line-height: 21px;
+    display: flex;
+    align-items: flex-end;
+    color: #59606D;
   }
-  #categories{
-    position: absolute;
+  #sort,#price{
+    padding-top:42px;
+    font-family: 'PT Sans', sans-serif;
+  }
+  nav{
     width: 161px;
     height: 95px;
-    left: 87px;
-    top: 97px;
-    div{
+    padding-left: 87px;
+    padding-top: 24px;
+    ul{
+      margin-left: -40px !important;
+    }
+    li{
+      color: #1F1F1F;
+      width: 139.69px;
       font-family: 'PT Sans', sans-serif;
+      font-weight: normal;
       font-size: 16px;
       line-height: 37px;
       display: flex;
       align-items: flex-end;
-      &:first-child{color: #1F1F1F;}
-      &:nth-child(2){color: #959DAD;}
-      &:nth-child(3){color: #59606D;}
+      padding-bottom: 16px;
+      height: 21px;
+      &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
-  #option{
-    position: absolute;
-    width: 160px;
-    height: 68px;
-    left: 1192px;
-    top: 69px;
-    background: #FFFFFF;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-  }
-  .card{
-    position: absolute;
-    width: 264px;
-    height: 272px;
-    left: 248px;
-    top: 163px;
-    background: #FFFFFF;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-  }
+
 </style>
