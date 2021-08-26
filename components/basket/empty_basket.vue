@@ -1,13 +1,18 @@
 <template>
   <div id="empty_basket">
     <div id="text">Пока что вы ничего не добавили в корзину.</div>
-    <button>Перейти к выбору</button>
+    <button @click="CloseClicked">Перейти к выбору</button>
   </div>
 </template>
 
 <script>
     export default {
-        name: "empty_basket"
+      name: "empty_basket",
+      methods: {
+        CloseClicked: function () {
+          this.$emit('closeClicked')
+        },
+      }
     }
 </script>
 
@@ -30,6 +35,9 @@
     font-size: 16px;
     line-height: 21px;
     text-align: center;
+    &:hover{
+      cursor: pointer;
+    }
   }
   #text,button{
     width: 364px;
