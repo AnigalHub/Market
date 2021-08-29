@@ -24,7 +24,11 @@
       },
       hideBasket:function () {
         this.isBasketShowing = false;
-      }
+      },
+
+    },
+    created: function () {
+      this.$store.dispatch('basketStore/refreshSavedState')
     }
   }
 </script>
