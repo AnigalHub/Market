@@ -2,29 +2,32 @@
   <div id="basket_with_form">
     <div id="text">Товары в корзине</div>
     <div id="basket_products">
-      <div class="basket_product"  v-for="product in Products" :key="product.name_product">
+      <div class="basket_product"  v-for="(product,index) in Products" :key="index">
         <div class="flex-container">
-          <img :src="product.img_src" :alt="product.img_alt">
+          <img :src="product.img_src" :alt="product.name">
           <div class="text_basket">
-            <p class="name_product_basket">{{product.name_product}}</p>
-            <p class="price_product_basket">{{product.price_product}}</p>
+            <p class="name_product_basket">{{product.name}}</p>
+            <p class="price_product_basket">{{product.price}}</p>
             <div class="star_basket">
-              <component :is="product.star"/>
+              <component :is="star"/>
             </div>
           </div>
-          <div class="delete_basket">
-            <component :is="product.delete_basket"/>
+          <div class="delete_basket" @click="deleteToBasket(index)">
+            <component :is="deleteBasket"/>
           </div>
         </div>
       </div>
+    </div>
+    <div class="form_basket">
       <div id="order">Оформить заказ</div>
       <form>
-        <input type="text" placeholder="Ваше имя">
-        <input type="text" placeholder="Телефон">
+        <input type="text" placeholder="Ваше имя" >
+        <input type="text" placeholder="Телефон" >
         <input type="text" placeholder="Адрес">
         <button>Отправить</button>
       </form>
     </div>
+
   </div>
 </template>
 
@@ -36,13 +39,20 @@
         name: "basket_with_form",
       data(){
           return{
-            Products:[
-              {star:StarSVG, number_star:"4.5", img_src:"./img.png", img_alt:"продукт", delete_basket:DeleteBasketSVG, name_product:"Рюкзак Louis Vuitton Discovery", price_product:"150 000 ₽",},
-              {star:StarSVG, number_star:"4.5", img_src:"./img.png", img_alt:"продукт", delete_basket:DeleteBasketSVG, name_product:"Рюкзак Louis Vuitton Discovery", price_product:"150 000 ₽",},
-              {star:StarSVG, number_star:"4.5", img_src:"./img.png", img_alt:"продукт", delete_basket:DeleteBasketSVG, name_product:"Рюкзак Louis Vuitton Discovery", price_product:"150 000 ₽",},
-            ]
+            star:StarSVG,
+            deleteBasket:DeleteBasketSVG,
           }
-      }
+      },
+      computed:{
+          Products: function () {
+              return this.$store.getters['basketStore/Products']
+          }
+      },
+      methods:{
+          deleteToBasket:function (index) {
+            this.$store.dispatch('basketStore/deleteProductState',index)
+          }
+      },
     }
 </script>
 
@@ -58,6 +68,11 @@
   }
   #basket_products{
     padding: 16px 48px;
+    max-height: 384px;
+    overflow: auto;
+  }
+  .form_basket{
+    padding: 0 48px 16px;
   }
   .basket_product{
     background: #FFFFFF;
@@ -104,6 +119,7 @@
       padding: 49px 22px 49px 0;
       width: 20px;
       height: 22px;
+      cursor: pointer;
     }
   }
   #order{
