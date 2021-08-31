@@ -1,5 +1,5 @@
 <template>
-  <div id="basket_with_form">
+  <div id="basket_with_form" :show="isLoading">
     <div id="text">Товары в корзине</div>
     <div id="basket_products">
       <div class="basket_product"  v-for="(product,index) in Products" :key="index">
@@ -22,7 +22,7 @@
       <div id="order">Оформить заказ</div>
       <form>
         <input type="text" placeholder="Ваше имя" >
-        <input type="text" placeholder="Телефон" >
+        <input type="text" placeholder="Телефон"  v-mask="'+7 (###) ###-##-##'" v-model="inputPhoneModel">
         <input type="text" placeholder="Адрес">
         <button>Отправить</button>
       </form>
@@ -41,6 +41,7 @@
           return{
             star:StarSVG,
             deleteBasket:DeleteBasketSVG,
+            inputPhoneModel: '',
           }
       },
       computed:{
@@ -50,7 +51,7 @@
       },
       methods:{
           deleteToBasket:function (index) {
-            this.$store.dispatch('basketStore/deleteProductState',index)
+            this.$store.commit('basketStore/deleteProduct',index)
           }
       },
     }
