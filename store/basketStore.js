@@ -36,5 +36,9 @@ export const actions = {
   deleteProductState(context, id) {
     context.commit('deleteProduct',id)
     localStorage.setItem('basket', JSON.stringify(context.getters.Products))
+  },
+  deleteBasketState(context){
+    context.commit('cleanBasket')
+    localStorage.setItem('basket', JSON.stringify(context.getters.Products))
   }
 }
