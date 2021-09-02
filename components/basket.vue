@@ -5,13 +5,12 @@
       <div id="close" @click="CloseClicked">
         <component  :is="close" />
       </div>
-
     </div>
-   <!--
-      <empty_basket/>
-        <basket_with_form/>
-      <successful_basket/>
-    -->
+    <!--  <empty_basket v-on:closeClicked="CloseClicked"/>-->
+
+    <basket_with_form/>
+     <!--    <successful_basket/>-->
+
   </div>
 </template>
 
@@ -29,7 +28,7 @@
         }
       },
       methods:{
-        CloseClicked:function () {this.$emit('closeClicked')}
+        CloseClicked:function () {this.$emit('closeClicked')},
       }
     }
 </script>
