@@ -23,8 +23,8 @@
       <form>
         <input type="text" placeholder="Ваше имя" >
         <input type="text" placeholder="Телефон"  v-mask="'+7 (###) ###-##-##'" v-model="inputPhoneModel">
-        <input type="text" placeholder="Адрес">
-        <button>Отправить</button>
+        <input type="text" placeholder="Адрес" >
+        <button @click="cleanToBasket">Отправить</button>
       </form>
     </div>
 
@@ -51,7 +51,10 @@
       },
       methods:{
           deleteToBasket:function (index) {
-            this.$store.commit('basketStore/deleteProduct',index)
+            this.$store.dispatch('basketStore/deleteProductState',index)
+          },
+          cleanToBasket:function () {
+            this.$store.dispatch('basketStore/deleteBasketState')
           }
       },
     }
