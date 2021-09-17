@@ -11,7 +11,7 @@
         </div>
       </div>
       <p class="name">{{product.name}}</p>
-      <p class="price">{{product.price}}</p>
+      <p class="price">{{numberWithSpaces(product.price)}} ₽</p>
     </div>
   </div>
 </template>
@@ -26,31 +26,31 @@
           star:StarSVG,
           basket:BasketSVG,
           Products:[
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:"150 000 ₽",
+            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
           ]
         }
@@ -58,7 +58,10 @@
       methods:{
         addToBasket:function (product) {
           this.$store.dispatch('basketStore/addProductState',product)
-        }
+        },
+        numberWithSpaces(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        },
       }
     }
 </script>
