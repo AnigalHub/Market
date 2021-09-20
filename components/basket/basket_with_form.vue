@@ -7,7 +7,7 @@
           <img :src="product.img_src" :alt="product.name">
           <div class="text_basket">
             <p class="name_product_basket">{{product.name}}</p>
-            <p class="price_product_basket">{{product.price}}</p>
+            <p class="price_product_basket">{{numberWithSpaces(product.price)}} ₽</p>
             <div class="star_basket">
               <component :is="star"/>
             </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+    import {numberWithSpaces} from "~/components/general_functions/numberWithSpaces";
     import StarSVG from "~/components/svg/star_svg";
     import DeleteBasketSVG from "~/components/svg/delete_basket_svg";
 
@@ -41,6 +42,7 @@
           return{
             star:StarSVG,
             deleteBasket:DeleteBasketSVG,
+            numberWithSpaces:numberWithSpaces,
             inputPhoneModel: '',
           }
       },

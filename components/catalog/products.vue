@@ -17,7 +17,8 @@
 </template>
 
 <script>
-    import StarSVG from "~/components/svg/star_svg";
+  import {numberWithSpaces} from "~/components/general_functions/numberWithSpaces";
+  import StarSVG from "~/components/svg/star_svg";
     import BasketSVG from "~/components/svg/basket_svg";
     export default {
       name: "products",
@@ -25,6 +26,7 @@
         return{
           star:StarSVG,
           basket:BasketSVG,
+          numberWithSpaces:numberWithSpaces,
           Products:[
             {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
               rating:"4.5", img_src:"./img.png",category:1 },
@@ -58,9 +60,6 @@
       methods:{
         addToBasket:function (product) {
           this.$store.dispatch('basketStore/addProductState',product)
-        },
-        numberWithSpaces(x) {
-          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         },
       }
     }
