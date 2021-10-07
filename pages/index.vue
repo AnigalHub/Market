@@ -34,12 +34,8 @@
 </script>
 
 <style  lang="scss">
-  body{
-    margin: 0 !important;
-  }
-  h1{
-    margin: 0 !important;
-  }
+  body{margin: 0 !important;}
+  h1{margin: 0 !important;}
   .background{
     margin-left: auto;
     margin-right: auto;
@@ -54,5 +50,27 @@
       display: flex;
       align-items: flex-end;
     }
+
+
+  }
+</style>
+<style>
+  @media screen and (min-width: 1220px) and (max-width: 1460px) {
+    .background{width: 1200px !important;}
+  }
+  @media screen and (min-width: 1020px) and (max-width: 1220px) {
+    .background{width: 992px !important;}
+  }
+  @media screen and (min-width: 860px) and (max-width: 1020px) {
+    .background{width: 835px !important;}
+  }
+  @media screen and (min-width: 670px) and (max-width: 860px) {
+    .background{width: 650px !important;}
+  }
+  @media screen and (min-width: 530px) and (max-width: 670px) {
+    .background{width: 500px !important;}
+  }
+  @media screen and  (max-width: 530px) {
+    .background{width: 100% !important;}
   }
 </style>

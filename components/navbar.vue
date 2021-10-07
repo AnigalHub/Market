@@ -72,4 +72,11 @@
     font-family: 'PT Sans', sans-serif;
     font-weight: bold;
   }
+  @media screen and  (max-width: 860px) {
+    #nav_basket{padding: 20px 10px 19.6px 20px;}
+    #number_basket{right: 5px;}
+  }
+  @media screen and  (max-width: 530px) {
+    #TestList{padding: 18px 0 0 20px;}
+  }
 </style>

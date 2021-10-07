@@ -123,4 +123,8 @@
       line-height: 18px;
     }
   }
+  @media screen and  (max-width: 530px) {
+    #products {width: 400px;}
+    .product{margin-left: 100px;}
+  }
 </style>

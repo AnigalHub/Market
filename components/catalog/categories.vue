@@ -37,4 +37,7 @@
       }
     }
   }
+  @media screen and  (max-width: 530px) {
+    #categories {padding: 24px 0 0 20px;}
+  }
 </style>
