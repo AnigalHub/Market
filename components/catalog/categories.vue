@@ -11,7 +11,7 @@
       name: "categories",
       data(){
         return{
-          Categories:[{name:"Рюкзаки"}, {name: "Футболки"}, {name: "Рубашки"},],
+          Categories:[{name:"Рюкзаки"}, {name: "Портфели"}, {name: "Сумки"},],
         }
       }
     }
