@@ -1,3 +1,4 @@
+<script src="../../nuxt.config.js"></script>
 <template>
   <div id="products">
     <div class="product"  v-for="(product,index) in Products" :key="index">
@@ -5,7 +6,7 @@
         <div class="star flex-container">
           <component :is="star"/>
         </div>
-        <img :src="product.img_src" :alt="product.name">
+        <img :src="'https://frontend-test.idalite.com' + product.photo" :alt="product.name">
         <div class="basket" @click="addToBasket(product)">
           <component :is="basket"/>
         </div>
@@ -22,39 +23,15 @@
     import BasketSVG from "~/components/svg/basket_svg";
     export default {
       name: "products",
+      props:{
+        Products: Array,
+      },
       data(){
         return{
           star:StarSVG,
           basket:BasketSVG,
           numberWithSpaces:numberWithSpaces,
-          Products:[
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-            {id:1, name:"Рюкзак Louis Vuitton Discovery",price:150000,
-              rating:"4.5", img_src:"./img.png",category:1 },
-          ]
+          //Products:[],
         }
       },
       methods:{
@@ -79,7 +56,7 @@
     background: #FFFFFF;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
-    &:nth-child(4), &:nth-child(8), &:nth-child(12){margin-right: 0 !important;}
+    &:nth-child(4n){margin-right: 0 !important;}
     &:hover{cursor: pointer;}
     .star{
       width: 61px;
