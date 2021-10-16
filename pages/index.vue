@@ -2,7 +2,7 @@
   <div>
     <navbar v-on:basketClicked="showBasket"/>
     <div class="background">
-      <catalog/>
+      <catalog :Products="Products"/>
       <basket v-if="isBasketShowing" v-on:closeClicked="hideBasket"/>
     </div>
   </div>
@@ -16,6 +16,14 @@
     data(){
       return{
         isBasketShowing:false,
+        Products: [],
+      }
+    },
+    async fetch(){
+      try{
+        this.Products = (await this.$axios.get('https://frontend-test.idalite.com/api/product?category')).data
+      } catch (error) {
+        console.log("Ошибка:", error)
       }
     },
     methods:{
