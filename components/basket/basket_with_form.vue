@@ -1,10 +1,10 @@
 <template>
-  <div id="basket_with_form" :show="isLoading">
+  <div id="basket_with_form">
     <div id="text">Товары в корзине</div>
     <div id="basket_products">
       <div class="basket_product"  v-for="(product,index) in Products" :key="index">
         <div class="flex-container">
-          <img :src="product.img_src" :alt="product.name">
+          <img :src="'https://frontend-test.idalite.com' + product.photo":alt="product.name">
           <div class="text_basket">
             <p class="name_product_basket">{{product.name}}</p>
             <p class="price_product_basket">{{numberWithSpaces(product.price)}} ₽</p>
