@@ -31,7 +31,6 @@
           star:StarSVG,
           basket:BasketSVG,
           numberWithSpaces:numberWithSpaces,
-          //Products:[],
         }
       },
       methods:{
