@@ -19,14 +19,17 @@
         return {
           sort:"цене",
           arrow: Arrow_filterSVG,
-          Filter:[{name:"По цене"},{name:"По популярности"}],
+          Filter:[{name:"По цене"}, {name:"По популярности"}],
         }
       },
+
       methods:{
         SortByPrice:function () {
+          this.$store.dispatch('ProductsStore/SortByPriceMin')
           this.sort = "цене"
         },
         SortByNamePopular:function () {
+          this.$store.dispatch('ProductsStore/SortByName')
           this.sort = "поп.."
         },
       }
