@@ -6,7 +6,7 @@
     </div>
     <div class="flex-container block_2">
       <categories/>
-      <products :Products="Products"/>
+      <products/>
     </div>
    </div>
 </template>
@@ -18,9 +18,6 @@
     export default {
       name: "catalog",
       components: {Sorting, Categories, Products},
-      props:{
-        Products: Array,
-      }
     }
 </script>
 <style>
