@@ -25,7 +25,6 @@ export const actions = {
     if (!process.browser)
       return;
     let newProducts = JSON.parse(localStorage.getItem('basket'));
-    console.log(newProducts)
     if(newProducts)
       context.commit('setSavedBasket',newProducts)
   },
