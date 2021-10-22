@@ -25,14 +25,14 @@ export const actions = {
     }
     context.commit('setProducts',newProductsPriceMin.sort(comparer))
   },
-  SortByName(context){
-    let newProductsName = context.getters.ProductsAll.slice()
+  SortByRating(context){
+    let newProductsRating = context.getters.ProductsAll.slice()
+    console.log(newProductsRating)
     let comparer = (a,b) => {
-      if(a.name>b.name) {return 1}
-      else if (a.name<b.name){return -1}
+      if(Number(a.rating)<Number(b.rating)) {return 1}
+      else if (Number(a.price)>Number(b.rating)){return -1}
       else {return 0}
     }
-    console.log(newProductsName.sort(comparer))
-    context.commit('setProducts',newProductsName.sort(comparer))
+    context.commit('setProducts',newProductsRating.sort(comparer))
   },
 }
