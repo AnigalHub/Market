@@ -9,7 +9,7 @@
             <p class="name_product_basket">{{product.name}}</p>
             <p class="price_product_basket">{{numberWithSpaces(product.price)}} ₽</p>
             <div class="star_basket">
-              <component :is="star"/>
+              <component :is="star"/>  <div class="rating">{{product.rating}}</div>
             </div>
           </div>
           <div class="delete_basket" @click="deleteToBasket(index)">
@@ -21,9 +21,9 @@
     <div class="form_basket">
       <div id="order">Оформить заказ</div>
       <form>
-        <input type="text" placeholder="Ваше имя" >
-        <input type="text" placeholder="Телефон"  v-mask="'+7 (###) ###-##-##'" v-model="inputPhoneModel">
-        <input type="text" placeholder="Адрес" >
+        <input type="text" placeholder="Ваше имя" v-model="FormBasket.nameForm">
+        <input type="text" placeholder="Телефон" v-mask="'+7 (###) ###-##-##'" v-model="FormBasket.telForm">
+        <input type="text" placeholder="Адрес" v-model="FormBasket.addressForm">
         <button @click="cleanToBasket">Отправить</button>
       </form>
     </div>
@@ -35,15 +35,18 @@
     import {numberWithSpaces} from "~/components/general_functions/numberWithSpaces";
     import StarSVG from "~/components/svg/star_svg";
     import DeleteBasketSVG from "~/components/svg/delete_basket_svg";
-
     export default {
         name: "basket_with_form",
       data(){
           return{
+            FormBasket:{
+              nameForm:'',
+              telForm:'',
+              addressForm:'',
+            },
             star:StarSVG,
             deleteBasket:DeleteBasketSVG,
             numberWithSpaces:numberWithSpaces,
-            inputPhoneModel: '',
           }
       },
       computed:{
@@ -56,16 +59,16 @@
             this.$store.dispatch('basketStore/deleteProductState',index)
           },
           cleanToBasket:function () {
-            this.$store.dispatch('basketStore/deleteBasketState')
+            if (this.FormBasket.nameForm && this.FormBasket.telForm && this.FormBasket.addressForm) {
+              this.$store.dispatch('basketStore/deleteBasketState')
+            }
           }
       },
     }
 </script>
 
 <style scoped lang="scss">
-  #basket_with_form{
-    padding-top: 24px;
-  }
+  #basket_with_form{padding-top: 24px;}
   #text{
     padding-left: 48px;
     font-size: 18px;
@@ -77,9 +80,7 @@
     max-height: 384px;
     overflow: auto;
   }
-  .form_basket{
-    padding: 0 48px 16px;
-  }
+  .form_basket{padding: 0 48px 16px;}
   .basket_product{
     background: #FFFFFF;
     width: 364px;
@@ -119,6 +120,12 @@
         padding-top: 16px;
         padding-left: 34.43px;
         padding-bottom: 12px;
+      }
+      .rating{
+        font-size: 14px;
+        color: #F2C94C;
+        margin-left: 20px;
+        margin-top: -21.5px;
       }
     }
     .delete_basket{
