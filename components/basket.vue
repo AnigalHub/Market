@@ -3,14 +3,14 @@
     <div class="flex-container">
       <h1>Корзина</h1>
       <div id="close" @click="CloseClicked">
-        <component  :is="close" />
+        <component :is="close" />
       </div>
     </div>
-    <!--  <empty_basket v-on:closeClicked="CloseClicked"/>-->
-
-    <basket_with_form/>
-     <!--    <successful_basket/>-->
-
+    <div v-bind:style="Update">
+      <empty_basket v-show="display_empty"/>
+      <basket_with_form v-show="display_form"/>
+      <successful_basket  v-show="display_successful"/>
+    </div>
   </div>
 </template>
 
@@ -25,10 +25,29 @@
       data() {
         return {
           close: CloseSVG,
+          display_empty: false,
+          display_form: false,
+          display_successful:false,
+        }
+      },
+      computed:{
+        Products: function () {
+          return this.$store.getters['basketStore/Products']
+        },
+        Update: function () {
+          if (this.$store.getters['basketStore/Products'].length == 0) {
+            this.display_form = false
+            this.display_empty = true
+          } else if (this.$store.getters['basketStore/Products'].length != 0) {
+            this.display_form = true
+            this.display_empty = false
+          }
         }
       },
       methods:{
-        CloseClicked:function () {this.$emit('closeClicked')},
+        CloseClicked:function () {
+          this.$emit('closeClicked')
+        },
       }
     }
 </script>
@@ -44,6 +63,7 @@
     background: #FFFFFF;
     box-shadow: -4px 0px 16px rgba(0, 0, 0, 0.05);
     border-radius: 8px 0 0 8px;
+    z-index: 2;
 
     h1{
       width: 118px;
