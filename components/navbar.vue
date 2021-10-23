@@ -3,9 +3,11 @@
     <div class="background">
       <div id="TestList">TestList</div>
       <div @click="BasketClicked">
-        <component id="nav_basket" :is="basket"  />
+        <component id="nav_basket" :is="basket" />
         <div id="number_basket">
-          <div id="number">3</div>
+          <div id="number">
+          {{Products.length}}
+          </div>
         </div>
       </div>
     </div>
@@ -19,6 +21,11 @@
       data() {
         return {
           basket:BasketSVG,
+        }
+      },
+      computed:{
+        Products: function () {
+          return this.$store.getters['basketStore/Products']
         }
       },
       methods:{
