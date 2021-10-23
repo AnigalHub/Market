@@ -5,6 +5,7 @@
       <div class="flex-container">
         <div class="star flex-container">
           <component :is="star"/>
+          <div class="rating">{{product.rating}}</div>
         </div>
         <img :src="'https://frontend-test.idalite.com' + product.photo" :alt="product.name">
         <div class="basket" @click="addToBasket(product)">
@@ -23,9 +24,6 @@
     import BasketSVG from "~/components/svg/basket_svg";
     export default {
       name: "products",
-      props:{
-        Products: Array,
-      },
       data(){
         return{
           star:StarSVG,
@@ -33,11 +31,17 @@
           numberWithSpaces:numberWithSpaces,
         }
       },
+      computed:{
+        Products: function () {
+          return this.$store.getters['ProductsStore/ProductsAll']
+        }
+      },
       methods:{
         addToBasket:function (product) {
           this.$store.dispatch('basketStore/addProductState',product)
         },
-      }
+      },
+
     }
 </script>
 
@@ -69,6 +73,13 @@
     .star svg{
       width: 34px;
       height: 20px;
+      float: left;
+    }
+    .star .rating{
+      font-size: 14px;
+      color: #F2C94C;
+      margin-left: -15px;
+      margin-top: 2.5px;
     }
     .basket{
       width: 60.29px;
