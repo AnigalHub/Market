@@ -2,7 +2,7 @@
   <div>
     <navbar v-on:basketClicked="showBasket"/>
     <div class="background">
-      <catalog :Products="Products"/>
+      <catalog/>
       <basket v-if="isBasketShowing" v-on:closeClicked="hideBasket"/>
     </div>
   </div>
@@ -16,23 +16,23 @@
     data(){
       return{
         isBasketShowing:false,
-        Products: [],
       }
     },
     async fetch(){
+
       console.log(this.$route.params.category)
       try{
         if(this.$route.params.category == 'Рюкзаки'){
-          this.Products = (await this.$axios.get('https://frontend-test.idalite.com/api/product?category=1')).data
+          this.$store.dispatch('ProductsStore/SetProducts',((await this.$axios.get('https://frontend-test.idalite.com/api/product?category=1')).data))
         }
         else if(this.$route.params.category == 'Портфели'){
-          this.Products = (await this.$axios.get('https://frontend-test.idalite.com/api/product?category=3')).data
+          this.$store.dispatch('ProductsStore/SetProducts',((await this.$axios.get('https://frontend-test.idalite.com/api/product?category=3')).data))
         }
         else if(this.$route.params.category == 'Сумки'){
-          this.Products = (await this.$axios.get('https://frontend-test.idalite.com/api/product?category=2')).data
+          this.$store.dispatch('ProductsStore/SetProducts',((await this.$axios.get('https://frontend-test.idalite.com/api/product?category=2')).data))
         }
         else {
-          this.Products = (await this.$axios.get('https://frontend-test.idalite.com/api/product')).data
+          this.$store.dispatch('ProductsStore/SetProducts',((await this.$axios.get('https://frontend-test.idalite.com/api/product')).data))
         }
       } catch (error) {
         console.log("Ошибка:", error)
