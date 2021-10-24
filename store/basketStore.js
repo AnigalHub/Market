@@ -1,5 +1,6 @@
 export const state = () =>({
-  products: []
+  products: [],
+  orderSend:false,
 })
 export const mutations ={
   addProduct(state, product){
@@ -13,11 +14,18 @@ export const mutations ={
   },
   setSavedBasket(state, savedBasket){
     state.products = savedBasket
+    console.log(state.products.length)
+  },
+  setOrderSend(state,orderSaved){
+    state.orderSend = orderSaved
   }
 }
 export const getters = {
   Products(state){
      return state.products
+  },
+  OrderSend(state){
+    return state.orderSend
   }
 }
 export const actions = {
@@ -27,6 +35,9 @@ export const actions = {
     let newProducts = JSON.parse(localStorage.getItem('basket'));
     if(newProducts)
       context.commit('setSavedBasket',newProducts)
+  },
+  SetOrderSend(context,orderSend){
+    context.commit('setOrderSend',orderSend)
   },
   addProductState(context,product){
     context.commit('addProduct',product)
@@ -38,6 +49,6 @@ export const actions = {
   },
   deleteBasketState(context){
     context.commit('cleanBasket')
-    localStorage.setItem('basket', JSON.stringify(context.getters.Products))
+   localStorage.setItem('basket', JSON.stringify(context.getters.Products))
   }
 }
