@@ -29,7 +29,7 @@
           this.sort = "цене"
         },
         SortByNamePopular:function () {
-          this.$store.dispatch('ProductsStore/SortByName')
+          this.$store.dispatch('ProductsStore/SortByRating')
           this.sort = "поп.."
         },
       }
