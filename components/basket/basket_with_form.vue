@@ -60,6 +60,7 @@
           },
           cleanToBasket:function () {
             if (this.FormBasket.nameForm && this.FormBasket.telForm && this.FormBasket.addressForm) {
+              this.$store.dispatch('basketStore/SetOrderSend',true)
               this.$store.dispatch('basketStore/deleteBasketState')
             }
           }
