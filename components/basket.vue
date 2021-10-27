@@ -1,15 +1,15 @@
 <template>
-  <div id="basket"  >
+  <div id="basket">
     <div class="flex-container">
       <h1>Корзина</h1>
       <div id="close" @click="CloseClicked">
-        <component :is="close" />
+        <component :is="close"/>
       </div>
     </div>
-    <div v-bind:style="Update">
-      <empty_basket v-show="display_empty"/>
-      <basket_with_form v-show="display_form"/>
-      <successful_basket  v-show="display_successful"/>
+    <div>
+      <empty_basket v-if="isEmpty"/>
+      <basket_with_form v-if="isForm"/>
+      <successful_basket v-if="isSuccessful"/>
     </div>
   </div>
 </template>
@@ -25,28 +25,26 @@
       data() {
         return {
           close: CloseSVG,
-          display_empty: false,
-          display_form: false,
-          display_successful:false,
         }
       },
       computed:{
         Products: function () {
           return this.$store.getters['basketStore/Products']
         },
-        Update: function () {
-          if (this.$store.getters['basketStore/Products'].length == 0) {
-            this.display_form = false
-            this.display_empty = true
-          } else if (this.$store.getters['basketStore/Products'].length != 0) {
-            this.display_form = true
-            this.display_empty = false
-          }
-        }
+        isEmpty:function (){
+          return this.$store.getters['basketStore/Products'].length == 0 && this.$store.getters['basketStore/OrderSend'] == false
+        },
+        isForm:function (){
+          return this.$store.getters['basketStore/Products'].length != 0 && this.$store.getters['basketStore/OrderSend'] == false
+        },
+        isSuccessful:function (){
+          return this.$store.getters['basketStore/OrderSend'] == true
+        },
       },
       methods:{
         CloseClicked:function () {
           this.$emit('closeClicked')
+          this.$store.dispatch('basketStore/SetOrderSend',false)
         },
       }
     }
@@ -55,7 +53,6 @@
 <style scoped lang="scss">
   #basket{
     position: absolute;
-    //display: none;
     width: 460px;
     height:calc(100% + 66px);
     left: 980px;
@@ -77,9 +74,7 @@
     #close{
       padding-top: 65px;
       margin-left: 227px;
-      &:hover{
-        cursor: pointer;
-      }
+      &:hover{cursor: pointer;}
     }
   }
 </style>
