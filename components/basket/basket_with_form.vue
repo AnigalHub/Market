@@ -24,7 +24,7 @@
         <input type="text" placeholder="Ваше имя" v-model="FormBasket.nameForm">
         <input type="text" placeholder="Телефон" v-mask="'+7 (###) ###-##-##'" v-model="FormBasket.telForm">
         <input type="text" placeholder="Адрес" v-model="FormBasket.addressForm">
-        <button @click="cleanToBasket">Отправить</button>
+        <button @click.prevent="cleanToBasket">Отправить</button>
       </form>
     </div>
 
@@ -36,7 +36,7 @@
     import StarSVG from "~/components/svg/star_svg";
     import DeleteBasketSVG from "~/components/svg/delete_basket_svg";
     export default {
-        name: "basket_with_form",
+      name: "basket_with_form",
       data(){
           return{
             FormBasket:{
@@ -60,7 +60,8 @@
           },
           cleanToBasket:function () {
             if (this.FormBasket.nameForm && this.FormBasket.telForm && this.FormBasket.addressForm) {
-              this.$store.dispatch('basketStore/SetOrderSend',true)
+              this.$emit('clickedForm')
+
               this.$store.dispatch('basketStore/deleteBasketState')
             }
           }
