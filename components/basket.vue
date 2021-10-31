@@ -8,7 +8,7 @@
     </div>
     <div>
       <empty_basket v-on:closeClicked="CloseClicked" v-if="isEmptyState"/>
-      <basket_with_form v-if="isFormState" v-on:clickedForm="SuccessfulState"/>
+      <basket_with_form v-if="isFormState" v-on:orderPlaced="SuccessfulState"/>
       <successful_basket v-if="isSuccessfulState"/>
     </div>
   </div>

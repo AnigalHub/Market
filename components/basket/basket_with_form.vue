@@ -40,7 +40,7 @@
       data(){
           return{
             FormBasket:{
-              nameForm:'',
+              nameForm:'', 
               telForm:'',
               addressForm:'',
             },
@@ -60,8 +60,7 @@
           },
           cleanToBasket:function () {
             if (this.FormBasket.nameForm && this.FormBasket.telForm && this.FormBasket.addressForm) {
-              this.$emit('clickedForm')
-
+              this.$emit('orderPlaced')
               this.$store.dispatch('basketStore/deleteBasketState')
             }
           }
