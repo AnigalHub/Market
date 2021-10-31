@@ -13,6 +13,7 @@
   import Basket from "~/components/basket";
   export default {
     components: {Basket, Catalog},
+    name:"index",
     data(){
       return{
         isBasketShowing:false,
@@ -25,7 +26,6 @@
         console.log("Ошибка:", error)
       }
     },
-
     methods:{
       showBasket: function () {
         this.isBasketShowing = true;
@@ -33,7 +33,6 @@
       hideBasket:function () {
         this.isBasketShowing = false;
       },
-
     },
     created: function () {
       this.$store.dispatch('basketStore/refreshSavedState')
