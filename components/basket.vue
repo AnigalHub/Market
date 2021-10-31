@@ -7,9 +7,9 @@
       </div>
     </div>
     <div>
-      <empty_basket v-if="isEmpty"/>
-      <basket_with_form v-if="isForm"/>
-      <successful_basket v-if="isSuccessful"/>
+      <empty_basket v-on:closeClicked="CloseClicked" v-if="isEmptyState"/>
+      <basket_with_form v-if="isFormState" v-on:clickedForm="SuccessfulState"/>
+      <successful_basket v-if="isSuccessfulState"/>
     </div>
   </div>
 </template>
@@ -25,23 +25,27 @@
       data() {
         return {
           close: CloseSVG,
+          isSuccessful: false,
         }
       },
       computed:{
         Products: function () {
           return this.$store.getters['basketStore/Products']
         },
-        isEmpty:function (){
-          return this.$store.getters['basketStore/Products'].length == 0 && this.$store.getters['basketStore/OrderSend'] == false
+        isEmptyState:function (){
+          return this.$store.getters['basketStore/Products'].length == 0 && !this.isSuccessful
         },
-        isForm:function (){
-          return this.$store.getters['basketStore/Products'].length != 0 && this.$store.getters['basketStore/OrderSend'] == false
+        isFormState:function (){
+          return this.$store.getters['basketStore/Products'].length != 0
         },
-        isSuccessful:function (){
-          return this.$store.getters['basketStore/OrderSend'] == true
+        isSuccessfulState:function (){
+          return this.isSuccessful
         },
       },
       methods:{
+        SuccessfulState(){
+          return this.isSuccessful = true
+        },
         CloseClicked:function () {
           this.$emit('closeClicked')
           this.$store.dispatch('basketStore/SetOrderSend',false)
